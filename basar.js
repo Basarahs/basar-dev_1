@@ -25,7 +25,7 @@ const { plaka, ceza, surucuAdi, ehliyetNo, aracMarka, aracRenk } = aracJSON;
 
 
 const cezaTurleri = [
-    { tur: "Hız İhlali", min: 900, max: 3500 },
+    { tur: "Hız İhlali", min: 900, max: 4000 },
     { tur: "Park Yasağı", min: 500, max: 1000 },
     { tur: "Kırmızı Işık İhlali", min: 1500, max: 3000 },
     { tur: "Emniyet Kemeri Takmama", min: 700, max: 1500 },
