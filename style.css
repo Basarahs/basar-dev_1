@@ -11,30 +11,6 @@ body {
   min-height: 100vh;
 }
 
-.navbar {
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  padding: 15px 30px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-  padding: 8px 15px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
-
-.navbar a:hover,
-.navbar a.active {
-  background: #00c9ff;
-  color: #000;
-}
-
 .kart {
   width: 420px;
   padding: 35px;
@@ -171,6 +147,10 @@ button {
   font-size: 1.1rem;
   line-height: 1.7;
   color: #ddd;
+}
+
+.hidden {
+  display: none;
 }
 
 @keyframes fadeIn {

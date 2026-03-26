@@ -45,9 +45,7 @@ function sorgula() {
   const arac = aracBul(plaka);
 
   if (arac) {
-    if (arac.ceza === 0) {
-      cezaUret(arac);
-    }
+    if (arac.ceza === 0) cezaUret(arac);
 
     yazdir(
       `🚗 Plaka: ${arac.plaka}<br>
@@ -80,7 +78,16 @@ function ode() {
 }
 
 document.getElementById("plakaKutusu").addEventListener("keyup", function (e) {
-  if (e.key === "Enter") {
-    sorgula();
-  }
+  if (e.key === "Enter") sorgula();
+});
+
+document.getElementById("sorguBtn").addEventListener("click", sorgula);
+document.getElementById("odemeBtn").addEventListener("click", ode);
+
+
+document.querySelectorAll('[data-target="sorgula"]').forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("sorgula").classList.remove("hidden");
+  });
 });
