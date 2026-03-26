@@ -10,6 +10,7 @@ class Arac {
   }
 }
 
+// 🚗 Araç veritabanı (örnek)
 const araclar = [
   new Arac("07GUB35", "Başar Ahısha", "EH123456", "Citroen C4", "Beyaz"),
   new Arac("34ABC123", "Ahmet Yılmaz", "EH654321", "BMW 320", "Siyah"),
@@ -45,7 +46,9 @@ function sorgula() {
   const arac = aracBul(plaka);
 
   if (arac) {
-    if (arac.ceza === 0) cezaUret(arac);
+    if (arac.ceza === 0) {
+      cezaUret(arac);
+    }
 
     yazdir(
       `🚗 Plaka: ${arac.plaka}<br>
@@ -78,16 +81,7 @@ function ode() {
 }
 
 document.getElementById("plakaKutusu").addEventListener("keyup", function (e) {
-  if (e.key === "Enter") sorgula();
-});
-
-document.getElementById("sorguBtn").addEventListener("click", sorgula);
-document.getElementById("odemeBtn").addEventListener("click", ode);
-
-
-document.querySelectorAll('[data-target="sorgula"]').forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.getElementById("home").classList.add("hidden");
-    document.getElementById("sorgula").classList.remove("hidden");
-  });
+  if (e.key === "Enter") {
+    sorgula();
+  }
 });
