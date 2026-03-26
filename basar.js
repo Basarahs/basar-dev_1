@@ -1,87 +1,89 @@
 class Arac {
-    constructor(plaka, ceza, surucuAdi, ehliyetNo, aracMarka, aracRenk){
+    constructor(plaka, surucuAdi, ehliyetNo, aracMarka, aracRenk){
         this.plaka = plaka;
-        this.ceza = ceza;
         this.surucuAdi = surucuAdi;
         this.ehliyetNo = ehliyetNo;
         this.aracMarka = aracMarka;
         this.aracRenk = aracRenk;
+        this.ceza = 0;
+        this.cezaTuru = "-";
     }
 }
 
-const arac = new Arac(
-    "07GUB35",
-    0,
-    "Başar Ahısha",
-    "EH123456",
-    "Citroen c4 Cactus",
-    "Beyaz"
-);
 
-const jsonVeri = JSON.stringify(arac);
-const aracJSON = JSON.parse(jsonVeri);
-
-const { plaka, ceza, surucuAdi, ehliyetNo, aracMarka, aracRenk } = aracJSON;
-
+const araclar = [
+    new Arac("07GUB35","Başar Ahısha","EH123456","Citroen C4","Beyaz"),
+    new Arac("34ABC123","Ahmet Yılmaz","EH654321","BMW 320","Siyah"),
+    new Arac("06XYZ789","Mehmet Demir","EH987654","Audi A4","Gri")
+];
 
 const cezaTurleri = [
     { tur: "Hız İhlali", min: 900, max: 4000 },
     { tur: "Park Yasağı", min: 500, max: 1000 },
-    { tur: "Kırmızı Işık İhlali", min: 1500, max: 3000 },
-    { tur: "Emniyet Kemeri Takmama", min: 700, max: 1500 },
-    { tur: "Telefonla Konuşma", min: 1200, max: 2500 },
-    { tur: "Şerit İhlali", min: 900, max: 2200 },
-    { tur: "Trafik Levhasına Uymama", min: 800, max: 2000 },
-    { tur: "Muayenesiz Araç Kullanma", min: 1500, max: 4000 }
+    { tur: "Kırmızı Işık", min: 1500, max: 3000 },
+    { tur: "Telefon Kullanımı", min: 1200, max: 2500 }
 ];
 
-
-const rastgele = cezaTurleri[Math.floor(Math.random() * cezaTurleri.length)];
-
-const cezaTuru = rastgele.tur;
-
-let cezaMiktari =
-    Math.floor(Math.random() * (rastgele.max - rastgele.min + 1)) +
-    rastgele.min;
-
-const sabitPlaka = plaka;
-
-const yazdir = (yazi) => {
-    document.getElementById("sonucAlani").innerHTML = yazi;
+const yazdir = (yazi, durum="") => {
+    const alan = document.getElementById("sonucAlani");
+    alan.className = durum;
+    alan.innerHTML = yazi;
 };
 
-async function sorgula() {
+function cezaUret(arac){
+    const rastgele = cezaTurleri[Math.floor(Math.random() * cezaTurleri.length)];
+    arac.cezaTuru = rastgele.tur;
+    arac.ceza = Math.floor(Math.random() * (rastgele.max - rastgele.min + 1)) + rastgele.min;
+}
 
-    const girilenPlaka = document.getElementById("plakaKutusu").value;
+function aracBul(plaka){
+    return araclar.find(a => a.plaka === plaka);
+}
 
-    if (girilenPlaka === sabitPlaka) {
+function sorgula(){
+
+    const plaka = document.getElementById("plakaKutusu").value.trim().toUpperCase();
+    const arac = aracBul(plaka);
+
+    if(arac){
+        if(arac.ceza === 0){
+            cezaUret(arac);
+        }
+
         yazdir(
-            "🚗 Plaka: " + plaka + "<br>" +
-            "👤 Sürücü: " + surucuAdi + "<br>" +
-            "🪪 Ehliyet No: " + ehliyetNo + "<br>" +
-            "🚙 Araç: " + aracMarka + "<br>" +
-            "🎨 Araç Renk: " + aracRenk + "<br>" +
-            "⚠ Ceza Türü: " + cezaTuru + "<br>" +
-            "💰 Güncel Borç: " + cezaMiktari + " TL"
+            `🚗 Plaka: ${arac.plaka}<br>
+             👤 Sürücü: ${arac.surucuAdi}<br>
+             🪪 Ehliyet: ${arac.ehliyetNo}<br>
+             🚙 Araç: ${arac.aracMarka}<br>
+             🎨 Renk: ${arac.aracRenk}<br>
+             ⚠ Ceza: ${arac.cezaTuru}<br>
+             💰 Borç: ${arac.ceza} TL`,
+            "basarili"
         );
+
     } else {
-        yazdir("❌ Kayıt bulunamadı.");
+        yazdir("❌ Bu plakaya ait kayıt yok!", "hata");
     }
 }
 
-async function ode() {
+function ode(){
 
-    const girilenPlaka = document.getElementById("plakaKutusu").value;
+    const plaka = document.getElementById("plakaKutusu").value.trim().toUpperCase();
+    const arac = aracBul(plaka);
 
-    if (girilenPlaka === sabitPlaka) {
-        cezaMiktari = 0;
-        alert("Ödeme alındı, borç sıfırlandı.");
-        sorgula();
+    if(arac){
+        if(arac.ceza > 0){
+            arac.ceza = 0;
+            arac.cezaTuru = "-";
+            yazdir("✅ Ödeme başarılı, borç sıfırlandı!", "basarili");
+        } else {
+            yazdir("ℹ️ Zaten borç yok.", "hata");
+        }
     }
 }
 
-document.getElementById("plakaKutusu").addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
+document.getElementById("plakaKutusu").addEventListener("keyup", function(e){
+    if(e.key === "Enter"){
         sorgula();
     }
 });

@@ -2,33 +2,41 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trafik Otomasyonu</title>
 
-<style>
-
-</style>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<script src="basar.js"></script>
+
 <div class="kart">
 
-<h3>🚓 Trafik Cezası Sorgulama</h3>
+    <h2>🚓 Trafik Ceza Sistemi</h2>
 
-<input type="text" id="plakaKutusu" placeholder="Plaka giriniz">
+    <input 
+        type="text" 
+        id="plakaKutusu" 
+        placeholder="Plaka giriniz (örn: 34ABC123)"
+        autocomplete="off"
+    >
 
-<br>
+    <div class="butonlar">
+        <button id="sorguBtn">SORGULA</button>
+        <button id="odemeBtn">ÖDE</button>
+    </div>
 
-<button id="sorguBtn" onclick="sorgula()">SORGULA</button>
-<button id="odemeBtn" onclick="ode()">ÖDE</button>
-
-<div id="sonucAlani"></div>
+    <div id="sonucAlani">
+        <span style="opacity:0.6;">Plaka girerek sorgulama yapabilirsiniz...</span>
+    </div>
 
 </div>
 
-<script>
+<script src="basar.js"></script>
 
+<script>
+document.getElementById("sorguBtn").addEventListener("click", sorgula);
+document.getElementById("odemeBtn").addEventListener("click", ode);
 </script>
 
 </body>
