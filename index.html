@@ -4,99 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trafik Otomasyonu</title>
-<style>
-/* ---------------- Genel ---------------- */
-* {margin:0; padding:0; box-sizing:border-box;}
-body {font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:linear-gradient(135deg,#0f2027,#203a43,#2c5364); color:white; min-height:100vh;}
-a {text-decoration:none; color:white;}
-.hidden {display:none;}
-section {padding:40px 20px; max-width:720px; margin:40px auto;}
-h2 {margin-bottom:25px; font-size:24px;}
-
-/* ---------------- Navbar ---------------- */
-.navbar {
-  background: rgba(0,0,0,0.3);
-  backdrop-filter: blur(10px);
-  padding:15px 30px; display:flex; justify-content:center; gap:30px;
-  border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.5); flex-wrap: wrap;
-}
-.navbar a {position:relative; padding:10px 20px; border-radius:12px; font-weight:600; transition: all 0.3s ease;}
-.navbar a.active::after, .navbar a:hover::after {
-  content:'';
-  position:absolute;
-  bottom:-5px;
-  left:0;
-  width:100%;
-  height:3px;
-  background:#00f260;
-  border-radius:2px;
-}
-
-/* ---------------- Hero ---------------- */
-.hero {text-align:center; margin-top:50px;}
-.hero h1 {font-size:2.5rem; margin-bottom:20px; animation: fadeInDown 1s ease forwards;}
-.hero p {font-size:1.2rem; margin-bottom:30px; max-width:480px; margin-left:auto; margin-right:auto; animation: fadeIn 1.2s ease forwards;}
-.btn-primary {background:linear-gradient(45deg,#00f260,#0575e6); color:#000; padding:12px 28px; border-radius:30px; font-weight:700; display:inline-block; transition:0.3s;}
-.btn-primary:hover {transform:scale(1.1); box-shadow:0 7px 20px rgba(0,242,96,0.9);}
-
-/* ---------------- Kart / Sorgulama ---------------- */
-.kart {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(25px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-  border-radius: 20px;
-  padding: 40px;
-  text-align:center;
-  margin:40px auto;
-  width:420px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.kart:hover {transform: translateY(-5px); box-shadow:0 12px 40px rgba(0,0,0,0.8);}
-.kart input {
-  width:100%;
-  padding:13px;
-  border:none;
-  border-radius:12px;
-  margin-bottom:20px;
-  outline:none;
-  background:rgba(255,255,255,0.15);
-  color:white;
-  font-size:16px;
-}
-.kart input::placeholder {color:#ddd;}
-.butonlar {display:flex; gap:10px; justify-content:center;}
-.butonlar button {
-  flex:1; padding:14px; border:none; border-radius:30px; font-size:15px; cursor:pointer; font-weight:700;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-#sorguBtn {background:linear-gradient(135deg,#00f260,#0575e6); color:#000;}
-#sorguBtn:hover {transform:scale(1.1); box-shadow:0 10px 25px rgba(0,255,128,0.7);}
-#odemeBtn { background: linear-gradient(135deg,#ff512f,#dd2476); color:#000;}
-#odemeBtn:hover { box-shadow: 0 10px 25px rgba(255,75,43,0.7);}
-#sonucAlani {margin-top:20px; padding:15px; background:rgba(0,0,0,0.5); border-radius:12px; text-align:left; font-size:14px; line-height:1.6; min-height:90px; border:1px solid rgba(255,255,255,0.1);}
-.basarili {border-left:4px solid #00ff99; padding-left:10px;}
-.hata {border-left:4px solid #ff4b2b; padding-left:10px;}
-
-/* ---------------- İçerik Bölümleri ---------------- */
-.content-section {color:#ddd; line-height:1.7; padding:20px 0;}
-
-/* ---------------- Animasyonlar ---------------- */
-@keyframes fadeInDown {0%{opacity:0; transform:translateY(-20px);} 100%{opacity:1; transform:translateY(0);}}
-@keyframes fadeIn {0%{opacity:0;} 100%{opacity:1;}}
-
-/* ---------------- Responsive ---------------- */
-@media (max-width:480px){
-  .kart {width:90%; padding:25px;}
-  .hero h1 {font-size:1.8rem;}
-  .hero p {font-size:1rem;}
-  .butonlar button {padding:10px; font-size:14px;}
-  .navbar {gap:10px;}
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Navbar -->
 <nav class="navbar">
   <a href="#" class="active" data-target="home">Ana Sayfa</a>
   <a href="#" data-target="sorgula">Ceza Sorgula</a>
@@ -104,7 +15,6 @@ h2 {margin-bottom:25px; font-size:24px;}
   <a href="#" data-target="contact">İletişim</a>
 </nav>
 
-<!-- Ana Sayfa -->
 <section id="home">
   <div class="hero">
     <h1>🚦 Trafik Ceza Sorgulama Sistemine Hoş Geldiniz</h1>
@@ -113,7 +23,6 @@ h2 {margin-bottom:25px; font-size:24px;}
   </div>
 </section>
 
-<!-- Sorgulama -->
 <section id="sorgula" class="hidden">
   <div class="kart">
     <h2>🚓 Trafik Ceza Sistemi</h2>
@@ -126,7 +35,6 @@ h2 {margin-bottom:25px; font-size:24px;}
   </div>
 </section>
 
-<!-- Hakkında -->
 <section id="about" class="hidden">
   <div class="content-section">
     <h2>Projeye Genel Bakış</h2>
@@ -135,7 +43,6 @@ h2 {margin-bottom:25px; font-size:24px;}
   </div>
 </section>
 
-<!-- İletişim -->
 <section id="contact" class="hidden">
   <div class="content-section">
     <h2>Bizimle İletişime Geçin</h2>
@@ -145,84 +52,6 @@ h2 {margin-bottom:25px; font-size:24px;}
   </div>
 </section>
 
-<script>
-// ---------------- Navbar Geçiş ----------------
-const links=document.querySelectorAll('.navbar a');
-const sections=document.querySelectorAll('section');
-links.forEach(link=>{
-  link.addEventListener('click',e=>{
-    e.preventDefault();
-    const target=link.dataset.target;
-    sections.forEach(sec=>sec.classList.add('hidden'));
-    document.getElementById(target).classList.remove('hidden');
-    links.forEach(l=>l.classList.remove('active'));
-    link.classList.add('active');
-  });
-});
-
-// Ana Sayfa "Hemen Sorgula" butonu
-document.querySelectorAll('[data-target="sorgula"]').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    sections.forEach(sec=>sec.classList.add('hidden'));
-    document.getElementById('sorgula').classList.remove('hidden');
-    links.forEach(l=>l.classList.remove('active'));
-    links.forEach(l=>{if(l.dataset.target==="sorgula") l.classList.add('active');});
-  });
-});
-
-// ---------------- Ceza Sorgulama ----------------
-class Arac {
-  constructor(plaka,surucuAdi,ehliyetNo,aracMarka,aracRenk){
-    this.plaka=plaka; this.surucuAdi=surucuAdi; this.ehliyetNo=ehliyetNo;
-    this.aracMarka=aracMarka; this.aracRenk=aracRenk; this.ceza=0; this.cezaTuru="-";
-  }
-}
-const araclar=[
-  new Arac("07GUB35","Başar Ahısha","EH123456","Citroen C4","Beyaz"),
-  new Arac("34ABC123","Ahmet Yılmaz","EH654321","BMW 320","Siyah"),
-  new Arac("06XYZ789","Mehmet Demir","EH987654","Audi A4","Gri")
-];
-const cezaTurleri=[
-  {tur:"Hız İhlali",min:900,max:4000},
-  {tur:"Park Yasağı",min:500,max:1000},
-  {tur:"Kırmızı Işık",min:1500,max:3000},
-  {tur:"Telefon Kullanımı",min:1200,max:2500}
-];
-const yazdir=(yazi,durum="")=>{
-  const alan=document.getElementById("sonucAlani"); alan.className=durum; alan.innerHTML=yazi;
-};
-function cezaUret(arac){
-  const rastgele=cezaTurleri[Math.floor(Math.random()*cezaTurleri.length)];
-  arac.cezaTuru=rastgele.tur;
-  arac.ceza=Math.floor(Math.random()*(rastgele.max-rastgele.min+1))+rastgele.min;
-}
-function aracBul(plaka){return araclar.find(a=>a.plaka===plaka);}
-function sorgula(){
-  const plaka=document.getElementById("plakaKutusu").value.trim().toUpperCase();
-  const arac=aracBul(plaka);
-  if(arac){
-    if(arac.ceza===0) cezaUret(arac);
-    yazdir(`🚗 Plaka: ${arac.plaka}<br>
-👤 Sürücü: ${arac.surucuAdi}<br>
-🪪 Ehliyet: ${arac.ehliyetNo}<br>
-🚙 Araç: ${arac.aracMarka}<br>
-🎨 Renk: ${arac.aracRenk}<br>
-⚠ Ceza: ${arac.cezaTuru}<br>
-💰 Borç: ${arac.ceza} TL`,"basarili");
-  } else { yazdir("❌ Bu plakaya ait kayıt yok!","hata"); }
-}
-function ode(){
-  const plaka=document.getElementById("plakaKutusu").value.trim().toUpperCase();
-  const arac=aracBul(plaka);
-  if(arac){
-    if(arac.ceza>0){ arac.ceza=0; arac.cezaTuru="-"; yazdir("✅ Ödeme başarılı, borç sıfırlandı!","basarili"); }
-    else yazdir("ℹ️ Zaten borç yok.","hata");
-  }
-}
-document.getElementById("plakaKutusu").addEventListener("keyup",function(e){ if(e.key==="Enter") sorgula(); });
-document.getElementById("sorguBtn").addEventListener("click",sorgula);
-document.getElementById("odemeBtn").addEventListener("click",ode);
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>
