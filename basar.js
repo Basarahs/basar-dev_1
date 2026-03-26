@@ -10,7 +10,7 @@ class Arac {
   }
 }
 
-// 🚗 Araç veritabanı (örnek)
+
 const araclar = [
   new Arac("07GUB35", "Başar Ahısha", "EH123456", "Citroen C4", "Beyaz"),
   new Arac("34ABC123", "Ahmet Yılmaz", "EH654321", "BMW 320", "Siyah"),

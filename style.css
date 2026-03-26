@@ -1,11 +1,11 @@
-/* Genel Sıfırlama */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body ve genel font */
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
@@ -13,7 +13,7 @@ body {
   min-height: 100vh;
 }
 
-/* Navbar */
+
 .navbar {
   background: linear-gradient(135deg, #1e3c72, #2a5298);
   padding: 15px 30px;
@@ -38,7 +38,7 @@ body {
   color: #000;
 }
 
-/* Kart (sorgulama sayfası için) */
+
 .kart {
   width: 420px;
   padding: 35px;
@@ -52,14 +52,14 @@ body {
   animation: fadeIn 0.7s ease;
 }
 
-/* Başlık */
+
 h2 {
   margin-bottom: 25px;
   font-size: 24px;
   letter-spacing: 1px;
 }
 
-/* Input */
+
 input {
   width: 100%;
   padding: 13px;
@@ -76,7 +76,7 @@ input::placeholder {
   color: #ddd;
 }
 
-/* Butonlar */
+
 .butonlar {
   display: flex;
   gap: 10px;
@@ -112,7 +112,7 @@ button {
   box-shadow: 0 0 15px #ff512f;
 }
 
-/* Sonuç Alanı */
+
 #sonucAlani {
   margin-top: 20px;
   padding: 15px;
@@ -133,7 +133,7 @@ button {
   border-left: 4px solid #ff4b2b;
 }
 
-/* Ana Sayfa Hero */
+
 .hero {
   min-height: 80vh;
   display: flex;
@@ -173,7 +173,7 @@ button {
   box-shadow: 0 7px 20px rgba(0, 242, 96, 0.9);
 }
 
-/* İçerik Bölümleri (Hakkında, İletişim) */
+
 .content-section {
   max-width: 720px;
   margin: 60px auto;
@@ -183,7 +183,7 @@ button {
   color: #ddd;
 }
 
-/* Animasyon */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
